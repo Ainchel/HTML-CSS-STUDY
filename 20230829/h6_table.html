@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<!-- 이번에는 <table>에 대해 살펴보기. -->
+<!-- table에는 기본적으로 <tr>, <th>, <tb> 등의 태그가 들어간다.  -->
+<!-- <tr> : table row의 약자로, 테이블이라는 것의 행(가로)를 표현하기 위해 쓰인다.  -->
+<!-- <td> : table data의 약자로, 테이블의 각 셀을 의미한다. -->
+<!-- <th> : table header의 약자로, 테이블의 타이틀을 표현하기 위해 쓰인다. 타이틀은 열(세로)와 비슷하다. -->
+<!-- 위 3개를 사용하여, 하나의 talbe 안에 <tr> 태그로 행을 표현하고, 그 안에 <td> 로 데이터를 표현해낸다. -->
+<!-- table에서 사용 가능한 속성 : border, width, height -->
+<!-- td, th에서 사용 가능한 속성 : align, valign (각각 가로 정렬, 세로 정렬. 속성값 별도 필요-->
+<!-- td에서만 사용 가능한 속성 : colspan, rowspan (각각 세로 합병, 가로 합병)-->
+
+	<table border = "1", width = "300px", height = "300px">
+	
+		<tr>
+			<td align = "center">ㄱ</td>
+			<td align = "center" valign = top>ㄹ</td>
+		</tr>>
+		<tr>
+			<td align = "center" valign = "top">ㄴ</td>
+			<td align = "center" valign = "bottom">ㅁ</td>
+		</tr>
+		<tr>
+			<td align = "right" valign = "top">ㄷ</td>
+			<td valign = "bottom">ㅂ</td>
+		</tr>
+		
+	</table>
+	
+	<hr><hr>
+	
+	<table border = "1", width = "300px", height = "300px">
+		<tr>  
+			<td colspan="2" align = "center"> 오 </td>
+			<td rowspan="2" align = "center"> 늘 </td>
+		</tr>
+		<tr>  
+			<td rowspan="2" align = "center"> 업 </td>
+			<td align = "center">
+			<table border = "1" width = "90%" height = "90%">
+				<tr>
+					<td align = "center"> 여 </td>
+					<td align = "center"> 기 </td>
+				</tr>
+					<td align = "center"> 지 </td>
+					<td align = "center"> 까 </td>
+				<tr>
+				
+				</tr>
+		
+			</td>
+			</table>
+		</tr>	
+		<tr>  
+			<td colspan="2" align = "center"> 수 </td>
+		</tr>
+	
+	
+	</table>
+
+
+</body>
+</html>
