@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+.aimage img{
+	max-width : 250px; /* 들어가는 사진의 크기 지정 */
+	max-height: 150px;
+	margin-top: 20px;
+	box-shadow: teal 0px 0px 5px;
+}
+
+.aimage{
+	border : silver solid 3px;	
+	border-radius: 10px;
+	box-shadow: teal 3px 3px 5px;
+	font-size: 20pt;
+	/* float은 둥둥 뜬다는 뜻. left 혹은 right로, 추가되는 이미지들을 쭉 늘어서 표시해준다*/
+	/* 이거 없으면, 한줄한줄씩 내려감녀서 표시됨. */
+	float:left;
+	margin-left: 30px;
+	margin-right: 30px;
+}

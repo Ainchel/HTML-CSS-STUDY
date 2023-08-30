@@ -1,0 +1,109 @@
+@charset "UTF-8";
+
+@font-face{ /* font-face 구문을 통해 웹 폰트를 등록한다. */
+	/* 웹 폰트를 CSS에 추가(IE에서는 안먹힌다고 한다)*/
+	/* 내가 아까 받아온 폰트파일의 글자를 전부 등록한다. */
+	/* 그러므로(글자 모양을 등록하므로), 용량이 커지고 결국 느려진다. */
+	/* 그래서, 우리가 사이트에서 보는 글자 부분들은 사실 사진일 확률이 높다.(가볍고 편해서)
+	 */
+	
+	/* 사용할 폰트 불러오기 */
+	font-family: "font1";
+	src: url("font1.ttf");
+}
+
+	/* 스크롤 안나오게 처리하기  */
+::-webkit-scrollbar{
+display:none;
+}
+
+	/* 불러올 폰트 사용해보기 */
+body{
+font-family: "font1";
+	/* html 특유의 기본 여백(가장자리쪽에 아무튼 있음) 없애기  */
+	/*
+		margin : 바깥쪽 여백
+		padding : 안쪽 여백
+	*/
+margin: 0px;
+padding: 0px;
+}
+
+#siteTitleArea{/* 이 ID로 지정한(#으로 찍으면 ID지정) 애들한테 적용 */
+	border-spacin: 0px; /* 각 td들의 간격을 조정  */
+	position: fixed; /* 무슨뜻인지 모름 */
+	top: 0px; /* 해당 내용이 표시되는 좌표 중 top  */
+	left: 0px; /* 좌표 중 left */
+	width: 100%; /* 가로를 여백 없이 전부 활용한다고 함. */
+}
+
+#siteMenuArea{/* 이 ID로 지정한 애한테 적용 */
+	background-color : #FFCCFF55; /* 배경 색상 지정 */
+	font-size: 30pt; /* 글자 크기 키우기 */
+}
+
+#siteMenuArea table{ /* siteMenuArea 아래의 table인 애들에 적용  */
+	width: 100%;
+}
+
+#siteMenuArea td{ /* siteMenuArea의 td인 애들에 적용  */
+	width : 25%; /* 각 td들을 가로의 25%씩 사용하게 한다.  */
+	text-align: center; /* 글씨 중앙 정렬 */
+}
+
+/* 처음 클릭 이후로, 버튼이 자주색+밑줄 처리되는거 변경하기  */
+
+#siteMenuArea a{ /* siteMenuArea의 a인 애들에 적용 */
+	color: teal; /* teal 색깔 적용 */
+	font-weight: 500; /* 글자 굵기(bold) 수치 */
+	text-decoration: none; /* 밑줄? 없게 처리 */
+	/* 애니메이션 효과 줘보기? */
+	/* transition: 속성명 시간 ease-in 혹은 ease-out 순서로 입력 */
+	transition: all 0.5s ease-in;
+}
+
+#siteMenuArea a:hover{ /*siteMenuArea 안의 a 항목들에 마우스가 뜨면(대면)*/
+	font-size: 40pt;
+	text-shadow: yellow 0px 0px 10px;
+	text-decoration: underline;
+}
+
+#siteMenuArea a:active{ /* a 항목을 누르고 있을 때 */
+	color:blue;
+}
+
+#siteTitle{
+	background-color: #3399FF55;
+	font-size: 30pt;
+	color: black;
+	text-shadow: teal 3px 5px 5px; /* 위 주석 찾아보기. 그림자 적용 */
+	width : 1000px;
+}
+
+#siteContentArea{
+	width: 1000px;
+	margin-left: auto; /*왼쪽 여백 자동 처리  */
+	margin-right: auto; /*오른쪽 여백 자동으로 : 가운데 정렬 시켜준다  */
+	margin-top: 200px; /*상단 여백 200정도 띄우기 */
+}
+
+#MOLUimage{
+	box-shadow: black 5px 5px 10px; /* 그림자 적용 */
+	/* 사이즈는 조절하면 그래픽이 꺠질 수 있으니, 하지 않는 것이 가장 좋다. */
+	/* 어쩔 수 없다면 하되, 현재 사이즈 => 보다 작은 사이즈로 수정하는 건 OK. */
+	/* 현재 사이즈 => 큰 사이즈로 수정 시 그림이 깨질 우려가 있음. */
+	max-width: 50%;
+	height:500px;
+}
+
+#GeshipanRow1:hover{
+	background-color:#FF000099;
+}
+
+#GeshipanRow2:hover{
+	background-color:#0000FF99;
+}
+
+#GeshipanRow3:hover{
+	background-color:#00FF0099;
+}

@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+#GeshipanTbl{
+	width : 990px;
+	background-color: #FFCC00;
+	color: black;
+	font-family: "font2";
+	font-size:20pt;
+	border-spacing: 0px; 
+}
+
+#GeshipanTbl .dataTr{
+	background-color: white; /* 배경 색상 */
+	color: pink; /* 내부 폰트 색상 */
+	height: 40px; /* 셀 높이? */
+	cursor: pointer; /* 해당 셀에 마우스 갔을때 커서 모양 */
+}
+
+#GeshipanTbl td{
+	text-align: center; /* td내용들 전부 가운데정렬 */
+	width:33%; /* 각 td들이 가로 33%씩 나눠서 공간차지. */
+	border-bottom: black solid 2px; /* 아랫줄에 2px짜리 검은색 밑줄 긋기 */
+}
+
+#GeshipanTbl .dataTr:hover{ /* 해당 테이블로 지정한 셀에 마우스를 올렸을 때 */
+	background-color: #990033;	
+}
+
+#GeshipanTbl th{ /* 테이블 헤더에 적용 */
+	height:60px;
+	font-size:20pt;
+}

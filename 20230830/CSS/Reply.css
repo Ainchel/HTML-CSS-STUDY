@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+
+.Reply{
+	width: 500px;
+	border: black solid 4px;
+	border-radius: 10px;
+	box-shadow: maroon 0px 0px 20px inset;
+	font-size: 15pt;
+}
+
+.imgTd{
+	width: 150px;
+	padding: 10px;
+}
+
+.Reply img{
+	max-width: 150px;
+	border: red solid 3px;
+	border-radius: 30px;
+}
+
+textarea{
+	background-color:transparent; /* 현재 위치의 상위에 적용된 것과 똑같은 걸로라는 뜻 */
+	border:none;
+	font-family:"font2";
+	font-size:15pt;
+	resize:none;
+}
+
+textarea:focus{ /* 텍스트에어리어가 활성화된(클릭된) 상태일때 */
+	outline:none;
+}
