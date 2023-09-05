@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script type = "text/javascript">
+		
+		//여기 만든 이 함수를 아래 버튼에서 실행시키려면?
+		//"이벤트" 라는 문법을 활용한다.
+		//function output(){
+		//	alert("출력");
+		//}
+		
+/* 1. 음료수 자판기 만들어보기
+ 1-1. 버튼 3개를 추가해서 각각 '100원', '500원', '1000원' 텍스트 넣기
+ 1-2. 각 버튼을 누를 시 소지금이 추가됨.
+ 1-3. 500원 미만이라면 선택할 수 있는 음료수 없음! 이라고 노출시키기.
+ 1-4. 500원 이상이면 '콜라 선택 가능' 출력
+ 1-5. 700원 이상이면 '콜라, 사이다 선택 가능' 출력
+ 1-6. 1000원 이상이면 '콜라, 사이다, 닥터페퍼 선택 가능'
+ 1-7. 2000원 이상이면 '콜라, 사이다, 닥터페퍼, 맥주 선택 가능'
+ 1-8. 3000원 이상이면 '콜라, 사이다, 닥터페퍼, 맥주, 소주 선택 가능'
+	=> 위 문구를 alert로 출력한다.
+ 소지금 상황은 log로 확인한다. */		
+	
+	let money = 0; 
+	let cokeCount = 0;
+	let ciderCount = 0;
+	let doctorpepperCount = 0;
+	let beerCount = 0;
+	let sojuCount = 0;
+	
+	function checkNowMoney(){
+		alert(`現在保有している金額 : ${money}円`);
+	}
+	
+	function insert(_money){
+		money += _money;
+		console.log(money);
+	}
+	
+	function minus(_money){
+		money -= _money;
+		console.log(money);
+	}
+	
+	function printMenu(){
+		
+		if(money < 500){
+			alert(`선택할 수 있는 음료수가 없습니다. \n보유금 : ${money}원`);
+		} else if(500 <= money && money < 700){
+			alert(`콜라 선택 가능 \n보유금 : ${money}원`);
+		} else if(700 <= money && money < 1000){
+			alert(`콜라, 사이다 선택 가능 \n보유금 : ${money}원`);
+		} else if(1000 <= money && money < 2000){
+			alert(`콜라, 사이다, 닥터페퍼 선택 가능 \n보유금 : ${money}원`);
+		} else if(2000 <= money && money < 3000){
+			alert(`콜라, 사이다, 닥터페퍼, 맥주 선택 가능 \n보유금 : ${money}원`);
+		} else if(3000 <= money){
+			alert(`콜라, 사이다, 닥터페퍼, 맥주, 소주 선택 가능 \n보유금 : ${money}원`);
+		}
+	}
+	
+	function resetMoney(){
+		money = 0;
+		console.log(money);
+		alert("소지금을 초기화했습니다.");
+	}
+	
+	function buyCoke(){
+		
+		if(money >= 500){
+			minus(500);
+			cokeCount++;
+			alert(`콜라를 구매했습니다. \n보유 콜라 : ${cokeCount}`);
+		} else{
+			alert("소지금이 부족합니다.");
+			return;
+		}
+		
+	}
+	
+	function buyCider(){
+		
+		if(money >= 700){
+			minus(700);
+			ciderCount++;
+			alert(`사이다를 구매했습니다. \n보유 사이다 : ${ciderCount}`);
+		} else{
+			alert("소지금이 부족합니다.");
+			return;
+		}
+		
+	}
+	
+	function buyDoctorPepper(){
+		
+		if(money >= 1000){
+			minus(1000);
+			doctorpepperCount++;
+			alert(`닥터페퍼를 구매했습니다. \n보유 닥터페퍼 : ${doctorpepperCount}`);
+		} else{
+			alert("소지금이 부족합니다.");
+			return;
+		}
+		
+	}
+	
+	function buyBeer(){
+		
+		if(money >= 2000){
+			minus(2000);
+			beerCount++;
+			alert(`맥주를 구매했습니다. \n보유 맥주 : ${beerCount}`);
+		} else{
+			alert("소지금이 부족합니다.");
+			return;
+		}
+		
+	}
+	
+	function buySoju(){
+		
+		if(money >= 3000){
+			minus(3000);
+			sojuCount++;
+			alert(`소주를 구매했습니다. \n보유 소주 : ${sojuCount}`);
+
+		} else{
+			alert("소지금이 부족합니다.");
+			return;
+		}
+	}
+	
+	</script>
+	
+	<style>
+	
+	button{
+		background-color: pink;
+		font-weight: 700;
+	}
+	
+	</style>
+	
+</head>
+<body>
+
+<!--button 태그의 이벤트 사용. 위 함수 호출되는지 확인-->
+<button onclick = "checkNowMoney()"> 今いくら持っている? </button>
+<button onclick = "insert(100); printMenu();"> 100円投入 </button> 
+<button onclick = "insert(500); printMenu();"> 500円投入 </button> 
+<button onclick = "insert(1000); printMenu();"> 1000円投入 </button> 
+<button onclick = "resetMoney();"> お金を0円に </button><p>
+飲み物リスト<hr>
+<button onclick = "buyCoke();">
+	 <img src = "https://www.ccbk.co.kr/m/static/images/brand/img_04.png" width = "280" height = "350">
+	 <br>コーラを購買: 500円
+</button>
+<button onclick = "buyCider();"> 
+	 <img src = "https://blogfiles.pstatic.net/MjAyMDA2MTBfMTgx/MDAxNTkxNzk3Njg0NDcy.EMnRGtYvVOH1sPBN20H9V9QfdBu6hnZaMMvRuzNywWQg.-dCx86YKJMQZj_Q-AEmu6jCl9FxJ--3AQmYw5NoZbTcg.JPEG.oklawyer/%EC%82%AC%EC%9D%B4%EB%8B%A4.jpg?type=w2" width = "280" height = "350">
+	 <br>サイダーを購買 : 700円
+</button>
+<button onclick = "buyDoctorPepper();">
+	 <img src = "https://img.danawa.com/prod_img/500000/411/719/img/15719411_1.jpg?_v=20211118101236" width = "280" height = "350">
+	 <br>ドクターペッパーを購買 : 1000円
+</button>
+<button onclick = "buyBeer();"> 
+	<img src = "https://wplyuoicjiwl13857209.cdn.ntruss.com/data2/content/image/2016/08/19/.cache/512/20160819055488.jpg" width = "280" height = "350">
+	<br>ビールを購買 : 2000円
+	</button>
+<button onclick = "buySoju();"> 
+	<img src = "https://img.hankyung.com/photo/202211/AA.31943858.1.jpg" width = "280" height = "350">
+	<br>韓国焼酎を購買 : 3000円
+	</button>
+
+</body>
+</html>

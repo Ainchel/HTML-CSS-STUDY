@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type = "text/javascript">
+	
+	/*
+		function + 반복문을 활용하여,
+		prompt로 각각 행의 갯수, 열의 갯수를 입력하면
+		행x열의 테이블의 만들어지고, 각 td들 별로 숫자가 카운팅되게 만들기.
+		결과물은 document.write로 출력시키기.
+	*/
+	
+	//document.write()의 특징 : 웹페이지가 로딩될 때 실행하면, 가장 먼저 데이터를 출력시킨다.
+	//테스트나 디버깅 용도로 자주 사용한다.
+	//html 중간에서 해당 메소드가 실행되면, 이전에 페이지에 로딩된 데이터를 전부 지워버리고 자신의 데이터를 출력한다.
+	//그래서 거의 새 페이지에 띄우는거나 다름없기 때문에, css처럼 적용하려면 document.write(
+	//	'<style type = "text/css"> table {~~~~} </style>'
+	//); 같은 방식으로 사용하거나 태그에 속성을 먹이는 방식 등으로 가능하다.
+	
+	let tableCount = 1;
+	let colorCount = 1;
+	
+	function makeTable(){
+		let rows = Number(prompt("행의 수를 입력해 주세요 : "));
+		let columns = Number(prompt("열의 수를 입력해 주세요 : "));
+		
+		document.write('<table border = "2px">');
+		
+		for(let i = 0; i < columns; i++){
+			document.write('<tr height = "50px">');
+				for(let j = 0; j < rows; j++){
+					switch(colorCount){
+					case 1:
+					document.write('<td width = "50px" align = "center" style = "background-color: red";>');
+					break;
+					
+					case 2:
+					document.write('<td width = "50px" align = "center" style = "background-color: orange";>');
+					break;
+					
+					case 3:
+					document.write('<td width = "50px"  align = "center" style = "background-color: yellow";>');
+					break;
+
+					case 4:
+					document.write('<td width = "50px"  align = "center" style = "background-color: green";>');
+					break;
+					
+					case 5:
+					document.write('<td width = "50px"  align = "center" style = "background-color: blue";>');
+					break;
+					
+					case 6:
+					document.write('<td width = "50px"  align = "center" style = "background-color: rgb(0, 0, 160)";>');
+					break;
+					
+					case 7:
+					document.write('<td width = "50px"  align = "center" style = "background-color: violet";>');
+					break;
+					}
+					document.write(`${tableCount}`);
+					document.write('</td>');
+					tableCount++;
+					if(colorCount == 7){
+						colorCount = 1;
+					} else{
+					colorCount++;
+					}
+				}
+			document.write('</tr>');
+		}
+		document.write('</table>');
+	}
+	
+</script>
+
+<style>
+
+</style>
+
+</head>
+<body>
+	<h1> 자동 테이블 생성기 + 자동 숫자 카운트</h1>
+	<button onclick="makeTable();">테이블 생성</button>
+</body>
+</html>
