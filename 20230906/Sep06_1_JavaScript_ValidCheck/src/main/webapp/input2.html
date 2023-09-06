@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type ="text/javascript">
+	
+	function checkValid(){
+		
+		//form을 사용할 경우 입력값 받아오는 방법
+		//document.form의name.input의name 구문 사용.
+		let idInput = document.ff.id;
+		let pwInput = document.ff.pw;
+		let pwCheckInput = document.ff.pwcheck;
+		let footInput = document.ff.footsize;
+		
+		//받아온 데이터들에 대한 필수 검사(유효성 검사)를 진행.
+		
+		//ID 값에 대한 검사 진행.
+		if(!idInput.value){//idInput에 들어온 값이 없다면
+			alert("ID 란을 입력하지 않으셨습니다.");
+			idInput.focus(); // id입력하는 란에 커서를 갖다준다.
+			return false;
+		} else if(idInput.value.length < 5){ // inInput에 들어온 값이 5자리가 안된다면
+			alert("id는 5~10글자여야 합니다.");
+			idInput.focus(); // id입력란에 커서 갖다주기.
+			idInput.value = ""; // 기존 값을 비워주기.
+			return false;
+		}
+		
+		//PW 값에 대한 검사 진행.
+		
+		if(!pwInput.value){
+			alert("비밀번호 란을 입력하지 않으셨습니다.");
+			pwInput.focus();
+			return false;
+		} else if(pwInput.value.length < 5){
+			alert("pw는 5~10글자여야 합니다.");
+			pwInput.focus();
+			pwInput.value = ""; // 기존 값 잘 비워주기.
+			return false;
+		} 
+		else if(pwInput.value.indexOf("3") == -1 &&
+				pwInput.value.indexOf("6") == -1 &&
+				pwInput.value.indexOf("9") == -1){
+			alert("비밀번호에 3, 6, 9 중 하나 이상이 들어가 있어야 합니다.");
+			pwInput.focus();
+			pwInput.value = "";
+			return false;
+		} else if(pwInput.value.indexOf("h") == -1 &&
+				  pwInput.value.indexOf("k") == -1){
+			alert("비밀번호에 h, k 중 하나 이상이 들어가 있어야 합니다.");
+			pwInput.focus();
+			pwInput.value = "";
+			return false;  
+		}
+		
+	let numExist = false; // 숫자가 있는지 체크용
+	let num = "369"; //indexOf 돌릴 용도. 이중에 한놈만 있어라.
+	for(var i = 0; i < num.length; i++){
+		if(pwInput.value.indexOf(num[i]) != -1){ //369중에 하나가 들어가 있다면
+			numExist = true;
+			break;
+		}
+	}
+	
+	let letterExist = false;
+	let letter = "hk";
+	for (var i = 0; i < letter.length; i++){
+		if(pwInput.value.indexOf(letter[i]) != -1){ // hk중에 하나라도 있다면
+			letterExist = true;
+			break;
+		}
+	}
+	
+	alert("numExist : " + numExist);
+	alert("letterExist : " + letterExist);
+	
+	if(!numExist || !letterExist){
+		alert("numExist : "+ numExist);
+		alert("letterExist : " + letterExist);
+		alert("숫자와 문자 조건을 충족하지 못했습니다.");
+		return false;
+	}
+	
+		
+		if(!pwCheckInput.value){
+			alert("비밀번호 확인란을 입력하지 않으셨습니다.")
+			pwCheckInput.focus();
+			return false;
+		} else if(pwInput.value !== pwCheckInput.value){
+			alert("비밀번호와 비밀번호 확인 값이 일치하지 않습니다. 다시 입력해 주세요.");
+			pwInput.value = ""; 
+			pwCheckInput.value = "";
+			pwInput.focus();
+			return false;
+		}
+		
+		//발사이즈 유효성 검사하기. 발사이즈는 숫자만 받아야 한다.
+		if(isNaN(footInput.value)){
+			alert("발사이즈 값에 숫자가 아닌 값이 입력되었습니다.");
+			footInput.value = "";
+			footInput.focus();
+			return false;
+		}
+		
+		return true;
+		
+	} // ValidCheck end
+
+	//let s = "ㄹㅇㅋㅋ루 ㅋㅋ루삥뽕";
+	//console.log(s);
+	
+	//console.log(s.length);
+	
+	//console.log(s[4]); // s의 6번째 위치의 글자(인덱스) 내용물.
+	
+	//console.log(s.indexOf("ㅋ")); // 입력한 문자가 s의 몇 번 인덱스에 있는지 반환
+	
+	//console.log(s.indexOf("밥")); // 없는 문자를 입력했을 경우 -1을 반환.
+	
+	//console.log(s.indexOf("삥뽕") != -1); // 입력한 문자가 있는지 검사한 결과가 -1인지?
+										 // 즉, 입력한 문자가 s 안에 있는지? 있으면 true, 없으면 false를 반환
+	</script>
+
+</head>
+<body>
+
+	<!--
+		ID, PW, PW확인, 발사이즈를 입력받아서
+		button을 통해 위 데이터들을 보내볼 예정.
+		
+		//input으로 입력받는 값에 제한을 둬보고 싶다.
+		//1) ID : 5~10글자 사이.
+		//2) PW : 5~10글자 사이.
+		//3) PW check : 5~10글자 사이.
+		//4) footsize : 숫자만.
+	-->
+
+	<form action = "noname" name = "ff" onsubmit= "return checkValid();">
+		<!--onsubmit에서 true로 넘어오면 form을 전송해주며, false가 되면 데이터를 다시 보내게 한다.-->
+		<!--maxlength 속성 : 최대 입력받을 "자릿수" 설정.
+			autofocus 속성 : 처음에 페이지 열리면 해당 항목이 자동으로 활성화되게끔.
+		-->
+		ID <input name = "id" maxlength = "10" autofocus = "autofocus"> <p>
+		PW <input name = "pw" maxlength = "10"> <p>
+		PW Check <input name = "pwcheck" maxlength = "10"> <p>
+		Foot Size <input name = "footsize" mexlength = "3"> <p>
+		<hr>
+		<button>Submit</button>
+	</form>
+
+</body>
+</html>
