@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type = "text/javascript" src = "ValidCheck.js"></script>
+<script type = "text/javascript" src = "BMIValidCheck.js"></script>
+</head>
+<body>
+	<!--
+		table + form 형식을 통하여 BMI검사하는 페이지를 만들기.
+		BMI 공식 : 몸무게 / (키*키) 인데, 키는 미터 단위이다.
+		위 공식에서, BMI 값에 따른 분류는 아래에.
+		18.5 미만 : 저체중
+		18.5 ~ 25 : 정상
+		25 ~ 30 : 과체중
+		30 ~ 35 : 경도비만
+		35 ~ 40 : 중등도비만
+		40 ~~ 	: 고도비만
+		
+		필요한 정보(이름, cm키, kg몸무게, 사진)를 보낸다.
+		보내면, 보낸 정보 + 사진을 Servlet으로 출력한다.
+		
+		HTML에는 CSS를 사용하고, Servlet 쪽에는 사용하지 않겠다.
+		추가로, 입력받은 데이터의 유효성 검사를 진행.
+	-->
+	
+	<form action = "ServletIO" method = "post" name = "form"
+		 enctype = "multipart/form-data" onsubmit = "return bmiCheck();">
+	<div>이름 <input name = "NAME" maxlength = "20" autofocus = "autofocus"></div> <p>
+	<div>키(cm) <input name = "HEIGHT" maxlength = "6"></div> <p>
+	<div>몸무게(kg) <input name= "WEIGHT" maxlegnth = "6"></div> <p>
+	<div>사진 <input type ="file" name = "FILENAME"></div> <p>
+	<div><button> BMI 뽑아보기!!! </button></div>
+	</form>
+	
+</body>
+</html>
