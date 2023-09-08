@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type = "text/javascript">
+
+	function init(){
+		const canvas = document.getElementById("cv");
+		const ctx = canvas.getContext("2d");
+		
+		//캔버스에 이벤트를 추가
+		canvas.addEventListener("mousedown", function(me){
+			mDown(me);
+		}, false);
+		
+		canvas.addEventListener("mousemove", function(me){
+			mMove(me);
+		}, false);
+		
+		canvas.addEventListener("mouseup", function(me){
+			mUp(me);
+		}, false);
+		
+		canvas.addEventListener("mouseout", function(me){
+			mOut(me);
+		}, false);
+		
+		let stX = 0;
+		let stY = 0;
+		
+		//마우스를 캔버스에서 움직였을 때 그림을 그릴지 여부
+		let drag = false;
+		
+		function mDown(me){
+			stX = me.offsetX; // 클릭한 시점의 마우스 X좌표
+			stY = me.offsetY; // 클릭한 시점의 마우스 Y좌표
+			drag = true; //클릭을 했을 때 그려지게끔 플래그변수 ON
+		}
+		
+		function mMove(me){
+			if(!drag){
+				return;
+			}
+			
+			let nowX = me.offsetX;
+			let nowY = me.offsetY;
+			
+			//클릭한 상태이고, 마우스를 움직일 때마다 그림을 그리게끔 함수
+			canvasDraw(nowX, nowY);
+			
+			stX = nowX;
+			stY = nowY;
+		}
+		
+		function canvasDraw(currentX, currentY){
+			ctx.beginPath();
+			ctx.lineWidth = 10;
+			ctx.strokeStyle = "lightblue"; // 선 색상
+			
+			//그림을 그리려면, 현재 마우스 위치로 그림 시작 위치를 잡아줘야한다.
+			
+			ctx.moveTo(stX, stY);
+			
+			//시작한 점에서, 이동한 점까지 선을 긋게끔.
+			ctx.lineTo(currentX, currentY);
+			ctx.stroke();
+		}
+		
+		function mUp(me){
+			drag = false;			
+		}
+		
+		function mOut(me){
+			drag = false;
+		}
+		
+	}
+
+
+</script>
+
+</head>
+<body onload = "init();">
+
+<canvas id = "cv" width = "600px" height = "600px" style = "border: black solid 3px;">
+</canvas>
+
+</body>
+</html>

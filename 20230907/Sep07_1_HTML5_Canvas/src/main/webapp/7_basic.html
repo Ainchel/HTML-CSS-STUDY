@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type = "text/javascript">
+	function getRandomColor(){
+		//Math.random()을 활용하여 만들것이다.
+		//0.0 ~ 1.0까지의 랜덤 숫자를 뽑아준다.
+		//그래서, Math.random() * 255를 하면? 0부터 255까지 나온다.
+		//그리고 저 랜덤 실수를 Math.round(Math.random() * 255)를 하여, 0~255까지의 정수로 바꿀 것이다.
+		
+		let r = Math.round(Math.random() * 255); // RGB의 R값 랜덤 뽑기
+		let g = Math.round(Math.random() * 255); // RGB의 G값 랜덤 뽑기
+		let b = Math.round(Math.random() * 255); // RGB의 B값 랜덤 뽑기
+		return "rgb(" + r + "," + g + "," + b + ")";
+	}
+	
+	function init(){
+		let cv = document.getElementById("cv");
+		let pen = cv.getContext("2d");
+		
+		let x = 0;
+		let y = 0;
+		
+		setInterval(() => {
+			pen.save(); //현재 펜 설정을 저장한다.
+			pen.fillStyle = "rgba(0, 0, 0, 0.2)"; //펜 색상 설정. 마지막 0.2는 투명도(0~1)값.
+			pen.fillRect(0, 0, 500, 500);
+			
+			pen.shadowOffsetX = 0;
+			pen.shadowOffsetY = 0;
+			pen.shadowBlur = 5;
+			pen.shadowColor = "white";
+			
+			x = Math.random() * 500;
+			y = Math.random() * 500;
+			pen.fillStyle = getRandomColor();
+			pen.fillRect(x, y, 20, 20);
+			
+			pen.restore(); //저장된 펜 설정을 불러온다.
+		}, 200);
+	}
+
+</script>
+
+</head>
+<body onload = "init();">
+
+<canvas id = "cv" width = "500px" height = "500px"> </canvas>
+
+</body>
+</html>

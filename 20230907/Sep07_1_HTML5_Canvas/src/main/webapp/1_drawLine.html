@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type = "text/javascript">
+
+	function init(){
+		// 1. 아래 html에 만든 canvas에 접근
+		const canvas = document.getElementById("cv");
+		
+		// 2. 2D 모드 그림을 그리는 객체를 생성
+		const ctx = canvas.getContext("2d");
+		
+		// 3. 선 그리기 설정
+		ctx.beginPath();
+		
+		// 4. 선을 시작할 출발점을 지정
+		ctx.moveTo(50, 50); //x = 50, y = 50이라는 뜻
+		
+		// 5. 첫 번째 도착할 지점을 지정.
+		ctx.lineTo(300, 50);
+		
+		// 6. 두 번째 도착 지점을 지정
+		ctx.lineTo(300, 200);
+		
+		// 7. 세 번째 도착 지점을 지정
+		ctx.lineTo(50, 200);
+		
+		// 8. 마지막 도착 지점을 지정
+		ctx.lineTo(50, 50);
+		
+		// 9. 선의 두께와 색상을 지정
+		ctx.lineWidth = 20;
+		ctx.strokeStyle = "pink";
+		
+		// 10. 선 끝부분 처리
+		ctx.lineCap = "round"; // butt, square, round 등의 값이 있다.
+		
+		// 11. 선 꺾는부분 처리
+		ctx.lineJoin = "round"; // mitter, round, bevel 등.
+		
+		// 12. 지정 다 마치고 선 진짜로 긋기
+		ctx.stroke();
+		
+		// 13. 그린 선들 내부에 색 채우기
+		ctx.fillStyle = "lightblue"; // 채울 색 지정하고
+		ctx.fill(); // 색 채우기
+	}
+
+</script>
+</head>
+<body onload="init();"><!-- event onload를 통해 JS의 함수를 호출 -->
+	<!-- onload : 문서가 웹페이지에 로딩되면, 명시한 이벤트가 발생한다. -->>
+	
+	<!-- HTML에서 도형 그려보기. -->
+	<!-- 우선은 도화지를 하나 만들자. -->
+	<canvas id = "cv" width = "400px" height = "400px"></canvas>
+</body>
+</html>

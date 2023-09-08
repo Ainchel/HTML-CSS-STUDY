@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type = "text/javascript">
+
+	function init(){
+		let cv = document.getElementById("cv");
+		let pen = cv.getContext("2d");
+		
+		pen.shadowOffsetX = 3; // 그림자?
+		pen.shadowOffsetY = 3; // 그림자?
+		pen.shadowBlur = 5; // 번짐
+		pen.shadowColor = "black";
+		
+		pen.fillStyle = "pink";
+		pen.fillRect(20, 30, 600, 50);
+		pen.fillRect(20, 480, 600, 50);
+		
+		let a = new Image();
+		a.src = "gm-mapo-tofu.jpg";
+		a.onload = () => {
+			//setInterval과 비슷한 걸로 settimeout이라는 함수도 있다.
+			//얘는 시간 중에 1번만 동작한다.
+			setInterval(() => {
+				let x = Math.random() * 600;
+				let y = Math.random() * 600;
+				let w = Math.random() * 200;
+				let h = Math.random() * 200;
+				pen.drawImage(a, x, y, w, h);
+			}, 100); // 인터벌 값은 1000이 1초이다. 100이므로 0.1초
+		}
+		
+		
+	}
+
+</script>
+</head>
+<body onload = "init();">
+
+	<canvas id = "cv" width = "600px" height = "600px"> </canvas>
+
+</body>
+</html>

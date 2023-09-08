@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type = "text/javascript">
+
+	function init(){
+		const canvas = document.getElementById("cv"); // html의 id가 cv인 요소 가져오기
+		
+		const ctx = canvas.getContext("2d"); // 2d 그리기용 객체 선언
+		
+		// 선을 하나 그리고 점선 설정
+		ctx.beginPath();
+		ctx.moveTo(10, 10);
+		ctx.lineTo(300, 10);
+		
+		ctx.lineWidth = 10;
+		ctx.setLineDash([20]); // 간격이 20인 점선을 세팅
+		ctx.stroke();
+		
+		ctx.beginPath(); // 하나 다 그리면 다시 beginPath 하는듯.
+		ctx.moveTo(10, 50);
+		ctx.lineTo(300, 50);
+		ctx.setLineDash([20, 10]); // 선의 길이가 20, 간격이 10인 점선을 세팅
+		ctx.stroke();
+		
+		ctx.beginPath(); // 하나 다 그리면 다시 beginPath 하는듯.
+		ctx.moveTo(10, 100);
+		ctx.lineTo(300, 100);
+		ctx.setLineDash([20, 10, 40, 10]); // 첫 선의 길이가 20, 간격이 10, 다음 선의 길이가 40, 간격이 10인 점선 세팅
+		ctx.stroke();
+		
+	}
+
+</script>
+</head>
+<body onload = "init();">
+	<!-- 이어서 캔버스에 선 그려보기. -->
+	<canvas id = "cv" width = "400px" height = "400px"></canvas>
+	
+
+</body>
+</html>

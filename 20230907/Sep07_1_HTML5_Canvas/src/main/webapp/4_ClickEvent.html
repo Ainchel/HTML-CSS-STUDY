@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type = "text/javascript">
+
+	function init(){
+		const canvas = document.getElementById("cv");
+		const ctx = canvas.getContext("2d");
+		
+		// 마우스 클릭 이벤트 처리를 할 것이다 : 마우스의 좌표값을 얻고, 클릭한 곳에 사각형을 그려낼 것이다.
+		canvas.onclick = function(event){
+			//마우스 위치의 좌표 얻기.
+			//캔버스의 위치(브라우저와 캔버스의 시작 좌표계가 미묘하게 달라서 따로 계산해서 맞춰야함.)
+			
+			const x = event.clientX - ctx.canvas.offsetLeft;
+			const y = event.clientY - ctx.canvas.offsetTop;
+			
+			//마우스 클릭한 곳에 사각형 그리기
+			ctx.fillRect(x-15, y-15, 30, 30);
+		}
+		
+		
+	}
+
+
+</script>
+
+</head>
+<body onload = "init();"">
+
+<!-- 클릭한 곳에 도형이 그려지게 만들어보기. -->
+	<canvas id = "cv" width = "400px" height = "400px" style="border: black solid 3px;">
+	
+	</canvas>
+
+</body>
+</html>
