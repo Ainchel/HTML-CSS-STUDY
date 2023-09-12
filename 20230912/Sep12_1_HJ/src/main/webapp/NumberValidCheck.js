@@ -1,0 +1,10 @@
+
+function NumValidCheck(){
+	
+	
+	
+	
+	
+	
+	return true;
+}
