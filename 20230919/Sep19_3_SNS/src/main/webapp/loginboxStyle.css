@@ -1,0 +1,37 @@
+.loginbox{
+	display: flex;
+	justify-content: center;
+	align-items : center;
+	flex-direction: column;
+	background-color:yellow;
+	width : 200px;
+	height : 200px;
+}
+
+.loginboxcover{
+	display:flex;
+	justify-content: flex-end;
+}
+
+.menus{
+	display:flex;
+	justify-content: right;
+}
+
+.includecenter{
+	display:flex;
+	flex-direction:column;
+	justify-content:flex-start;
+	align-items:center;
+	height: 100vh;
+}
+
+h1{
+	width:25%;
+}
+
+body{
+	margin:0px;
+	background-color:pink;
+}
+
