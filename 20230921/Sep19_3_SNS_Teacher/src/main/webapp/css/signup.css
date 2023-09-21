@@ -1,0 +1,77 @@
+@charset "UTF-8";
+
+#signupTbl input {
+	border: white solid 5px;
+	border-radius: 5px;
+	background-color: pink;
+	margin-top: 5px;
+	height: 35px;
+	width: 300px;
+	font-size: 15pt;
+	font-weight: 500;
+	color: white;
+	text-align: center;
+}
+
+#signupTbl input::placeholder {
+	text-align: center;
+	font-family: "soso";
+	font-weight: 500;
+	font-size: 15pt;
+	color: white;
+}
+
+#signupTbl button {
+	border: white solid 5px;
+	border-radius: 5px;
+	font-family: "soso";
+	font-size: 15pt;
+	font-weight: 700; 
+	color: white;
+	background-color: pink;
+	width: 150px;
+	height: 50px;
+	margin-top: 10px;
+}
+
+#signupTbl select {
+	width: 75px;
+	height: 35px;
+	border: white solid 5px;
+	border-radius: 5px;
+	background-color: pink;
+	color: white;
+	font-family: "soso";
+	font-size: 15pt;
+	margin-top: 5px;
+}
+
+input[type=file]::file-selector-button {
+	border: white solid 3px;
+	border-radius: 10px;
+	font-family: "soso";
+	background-color: transparent;
+	cursor: pointer;
+	color: white;
+}
+
+input[type=file]::file-selector-button:hover {
+	background-color: black;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

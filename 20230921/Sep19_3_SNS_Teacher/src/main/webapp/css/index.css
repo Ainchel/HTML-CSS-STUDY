@@ -1,0 +1,94 @@
+@charset "UTF-8";
+
+::-webkit-scrollbar {
+	display: none;
+}
+
+@font-face {
+	font-family: "soso";
+	src: url("Imsoso.ttf");
+}
+
+body {
+	margin: 0px;
+	padding: 0px;
+	background-color: black;
+	font-family: "soso";
+}
+
+#siteTitleTbl {
+	width: 100%;
+	border-spacing: 0px;
+}
+
+#siteTitle {
+	background-color: teal;
+	height: 60px;
+}
+
+#siteTitle a {
+	font-size: 40pt;
+	font-weight: 600;
+	color: white;
+	text-decoration: none;
+}
+
+#siteMenu {
+	background-color: pink;
+}
+
+#siteMenu a {
+	font-size: 25pt;
+	font-weight: 400;
+	color: white;
+	text-decoration: none;
+}
+
+#siteContentTbl {
+	width: 100%;
+}
+
+#siteContent {
+	font-size: 20pt;
+	font-weight: 300;
+	color: white;
+}
+
+#siteLoginTbl {
+	width: 200px;
+	height: 200px;
+	position: fixed;
+	top: 104px;
+	right: 0px;
+	background-color: teal;
+}
+
+#homeImg {
+	position: fixed;
+	left: 0px;
+	bottom: 0px;
+	width: 500px;
+	height: 500px;
+}
+
+#dbResult {
+	font-size: 18pt;
+	font-weight: 500;
+	position: fixed;
+	top: 70px;
+	right: 20px;
+	color: yellow;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

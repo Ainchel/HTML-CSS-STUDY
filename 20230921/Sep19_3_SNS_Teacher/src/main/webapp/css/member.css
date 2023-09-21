@@ -1,0 +1,88 @@
+@charset "UTF-8";
+
+#loginTbl {
+	margin-top: 10px;
+}
+
+#loginTd {
+	color: white;
+	font-size: 25pt;
+}
+
+#loginTbl input {
+	font-family: "soso";
+	font-size: 15pt;
+	border: pink solid 3px;
+	border-radius: 5px;
+	height: 30px;
+	background-color: transparent;
+	color: white;
+	text-align: center;
+	width: 80%;
+	margin-top: 10px;
+}
+
+#loginTbl input::placeholder {
+	font-family: "soso";
+	font-size: 15pt;
+	color: white;
+	text-align: center;
+}
+
+#loginTbl input:focus {
+	font-family: "soso";
+	outline: none;
+}
+
+#loginTbl button {
+	font-family: "soso";
+	font-size: 20px;
+	font-weight: 500;
+	color: white;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	margin-top: 10px;
+}
+
+#loginSuccessTbl {
+	font-family: "soso";
+	font-size: 18pt;
+	font-weight: 500;
+	color: white;
+}
+
+#loginSuccessTbl img {
+	width: 80px;
+}
+
+#loginSuccessTbl button {
+	font-family: "soso";
+	font-size: 20pt;
+	background-color: white;
+	border: pink solid 5px;
+	margin-top: 30px;
+	margin-left: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
