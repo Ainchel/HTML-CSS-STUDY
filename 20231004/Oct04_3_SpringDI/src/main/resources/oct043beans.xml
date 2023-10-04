@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:context="http://www.springframework.org/schema/context"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd   
+   http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context-3.1.xsd"   
+   >
+	
+	<!--기능 하나가 필요해서, 위에 코드를 추가한다. -->
+	<!--추가된 코드 목록  -->
+	
+	<!-- 1) xmlns:context="http://springframework.org/schema/context"  -->
+	<!-- 2) xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.1.xsd -->
+
+	<bean id = "h1" class = "com.inchel.oct043.human.Human">
+		<property name = "name" value= "김휴먼"></property>
+		<property name = "age" value= "200"></property>
+		<!-- 별명 배열 만들기 -->
+		<property name = "nickname">
+		<!--java에서 쓸 배열을 여기에서 만들 때에는, 아래와 같이 list 태그를 사용한다. -->
+		<list value-type="java.lang.String">
+			<value>아인첼</value>
+			<value>아인벨</value>
+			<value>아인셸</value>
+		</list>
+		</property>
+		<property name = "friend">
+			<list value-type="java.lang.String">
+				<value>조현일</value>
+				<value>권혁모</value>
+				<value>이범선</value>
+				<value>김찬혁</value>
+			</list>
+		</property>
+		<!--java에서 쓸 해쉬맵을 여기서에서 만들 때에는, 아래와 같이 <map> 태그를 사용한다. -->
+		<property name = "family">
+			<map key-type= "java.lang.String" value-type="java.lang.Integer">
+				<!--맵에 값을 넣을 때에는 <entry> 태그를 사용한다.-->
+				<entry key = "아버지" value = "400"></entry>
+				<entry key = "어머니" value = "300"></entry>
+				<entry key = "동생" value = "100"></entry>
+			</map>
+		</property>
+		<!--다른 bean 객체를 가져올 때에는, 프로퍼티의 속성으로 ref를 사용한 후, 해당 id를 입력한다. -->
+		<property name = "pet" ref = "d1"></property>
+		
+	</bean>
+	
+	<bean id = "d1" class = "com.inchel.oct043.dog.Dog">
+		<property name = "name" value = "멈뭄"></property>
+		<property name = "age" value = "5"></property>
+	</bean>
+	
+	<bean id = "c1" class = "com.inchel.oct043.cat.Cat">
+		<property name = "name" value = "고먐"></property>
+		<property name = "age" value = "9"></property>
+	</bean>
+	
+	<!--여기에서 bean을 등록해두면, @Autowired가 알아서 해석해서 그쪽으로(Java로)가져다주겠다는 의미.  -->
+	<context:annotation-config></context:annotation-config>
+
+</beans>
