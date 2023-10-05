@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<annotation-driven />
+
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<resources mapping="/resources/**" location="/resources/" />
+
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+	
+	<!--servlet-context.xml에서는, beans:bean을 써서 객체를 등록한다. 어레이리스트 비슷한 느낌임. -->
+	<beans:bean id = "f" class = "com.inchel.oct051.fruit.Fruit">
+		<beans:property name = "name" value = "사과" />
+		<beans:property name = "price" value = "5500" />
+	</beans:bean>
+	
+	<!--SimpledateFormat에 사용할 객체 만들어보기. -->
+	<!--SimpleDateFormat 클래스는 기존에 있는 lang꺼 사용하는 것에 주목 -->
+	<!--그리고 SimpleDateFormat 객체를 만들때, 생성자로 값만 넣어서 값 패턴대로 객체 뽑아내는 것에 주목.-->
+	<!--주목의 요지는, Java언어로 객체 만드는 코드를, 여기 xml식으로 변환하는 방식.-->
+	
+	<beans:bean id = "sdf" class = "java.text.SimpleDateFormat">
+		<beans:constructor-arg value = "yyyy-MM-dd HH:mm:ss" />
+	</beans:bean>
+	
+	<!--아래 코드가, 여기에 적어낸 객체들을 아래 패키지명 내에서 훑어서 적용시킬 것이라는 뜻이다. -->
+	<context:component-scan base-package="com.inchel.oct051" />
+	
+</beans:beans>
