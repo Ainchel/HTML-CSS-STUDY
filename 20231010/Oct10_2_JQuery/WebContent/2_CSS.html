@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type = "text/css">
+	h1{
+		color: red;
+		transition: all 0.5s ease-out;
+	}
+</style>
+
+<script type = "text/javascript" src = "jQuery.js"></script>
+<script type = "text/javascript">
+
+	$(function() {
+		//JQuery 형식으로 css 적용시켜보기.
+		//$(선택자).css("속성명", "값"); 형식으로 진행한다.
+		
+		//id가 btn1인 것을 누르면 h1의 글자색을 "teal"로 변경, 배경 색을 pink로 변경
+		
+		//id가 btn2인 것을 누르면 현재 h1에 적용되어 있는 글자색을 alert로 출력
+		
+		//id가 btn3인 것을 누르면 input에 입력한 값대로, h1의 글자 크기가 바뀌도록 변경
+		
+		//id가 btn4인 것을 누르면 input의 가로 길이를, input 안에 값으로 표현(출력).
+		
+		//let h1 = $("h1");
+		let iInput = $("#i");
+		
+		$("#btn1").click(() => {
+			//alert("버튼1 클릭");
+			$("h1").css("color", "teal");
+			$("h1").css("background-color", "pink");
+		});
+		
+		$("#btn2").click(() => {
+			//값을 받아올 때에는, 원하는 id.css()에 인자 하나만 입력한다.
+			let h1Color = $("h1").css("color");
+			alert(h1Color);
+		});
+		
+		$("#btn3").click(() => {
+			let iVal = $("#i").val();
+			//alert(iVal);
+			$("h1").css("font-size", iVal + "pt");
+		});
+		
+		$("#btn4").click(() => {
+			let iLength = $("#i").css("width");
+			alert(iLength);
+			$("#i").val(iLength);
+		});
+		
+	});
+
+</script>
+
+</head>
+<body>
+
+	<h1>개졸립스</h1>
+	<hr>
+	<button id = "btn1">btn1</button>
+	<button id = "btn2">btn2</button>
+	<hr>
+	<input id = "i">
+	<button id = "btn3">btn3</button>
+	<button id = "btn4">btn4</button>
+	
+	
+</body>
+</html>

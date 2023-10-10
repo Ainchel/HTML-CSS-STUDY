@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type = "text/css">
+		
+		img{
+		position:fixed;
+		transition: all 0.5s ease-out;
+		}
+		
+		#t{
+			position: fixed;
+			transition: all 0.5s ease-out;
+			top: -82px;
+		}
+		
+		#t2{
+			opacity : 0; /* 투명도 조절해주는 속성값. 사라지지는 않아서 안보이는 곳 누르면 메뉴 눌리기도 함.*/
+			/*여기에 display: none; 이라는 속성을 넣으면, 없는 것 처리돼서 메뉴도 안눌리고 애니메이션도 작동하지 않음. */
+			position : fixed;
+			right : 7px;
+			transition: all 0.5s ease-out;
+		}
+		
+		button{
+			position:fixed;
+			top : 150px;
+		}
+		
+</style>
+<script type = "text/javascript" src = "jQuery.js"></script>
+<script type = "text/javascript">
+
+	$(function(){
+		//일정 간격을 주는 함수들 별 비교.
+		//1. setInterval : JavaScript에서의 반복 함수 : 일정한 시간을 간격으로 코드를 반복해서 실행한다.
+		//2. setTimeout : 정해진 시간 간격으로 코드를 한 번 실행한다.
+		
+		setInterval(() => {
+		let x = Math.random() * 500;
+		let y = Math.random() * 500;
+		$("img").css("top", y + "px");
+		$("img").css("left", x + "px");
+		}, 1000);
+	
+		let isHandleOn = false;
+	
+		$("#handle").click(() => {
+			if(isHandleOn == false){
+			//alert("isHandleOn is false");
+			$("#t").css("top", "0px");
+			} else if(isHandleOn == true){
+			//alert("isHandleOn is true");
+			$("#t").css("top", "-82px");
+			}
+			isHandleOn = !isHandleOn;
+		});
+
+		//mouseenter() 속성과 mouseleave()속성에 대하여.
+		//mouseenter() : 해당하는 영역에 마우스 커서가 들어가면 이벤트가 발생한다.
+		//mouseleave() : 해당하는 영역에서 마우스 커서가 나가면 이벤트가 발생한다.
+		
+		$("#t2").mouseenter(() => {
+			$("#t2").css("opacity", 1);
+		});
+		
+		$("#t2").mouseleave(() => {
+			$("#t2").css("opacity", 0);
+		});
+		
+		let b = false;
+		$("button").click(() => {
+			if(b == false){
+				//.attr() : 속성을 가져오거나 추가하는 기능을 가졌다.
+				$("img").attr("src", "chicken.png");
+			} else{
+				$("img").attr("src", "pizza.png");
+			}
+			b = !b;
+		});
+		
+	});
+
+</script>
+
+</head>
+<body>
+
+	<img src = "pizza.png">
+	<table border = "1" id = "t">
+		<tr>
+			<td><a href = "https://www.naver.com">네이버로</a></td>
+		</tr>
+		<tr>
+			<td><a href = "https://www.naver.com">유튜브로</a></td>
+		</tr>
+		<tr>
+			<td><a href = "https://www.naver.com">구글로</a></td>
+		</tr>
+		<tr>
+			<td id = "handle">|  |  |  |  |</td>
+		</tr>
+	
+	</table>
+	
+	<table border = "1" id = "t2">
+		<tr>
+			<td><a href = "https://www.naver.com">네이버로</a></td>
+		</tr>
+		<tr>
+			<td><a href = "https://www.naver.com">유튜브로</a></td>
+		</tr>
+		<tr>
+			<td><a href = "https://www.naver.com">구글로</a></td>
+		</tr>
+	</table>
+	
+	<button>이미지 바꾸기</button>
+
+</body>
+</html>

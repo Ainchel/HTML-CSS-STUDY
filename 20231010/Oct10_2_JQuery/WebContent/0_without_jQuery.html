@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type = "text/javascript">
+	//javascript 언어는 인터프리터 방식이다(다시 강조). 실행을 하면, 한줄씩 기계어로 번역하며 실행한다.
+	// 반대로, 컴파일 방식 언어(예시 : Java)의 경우, 실행을 하면 코드 전체를 번역을 한 후에 실행한다.
+	// 자바스크립트는 컴파일 방식이 아니라서(전체 번역이 아니라서), 코드가 잘못되어도 별도 에러가 없어서(동작은 하지만) 에러 잡기가 힘들다.
+	
+	// 일단, DOM객체에 on어쩌고저쩌고 하는 이벤트들을 연결해 보기
+	
+	let iInput = null;
+	function init(){
+		//페이지에서 ID가 "i"인 객체의 값을 받아오기. input 태그에 붙여놨었음.
+		iInput = document.getElementById("i");
+		alert(iInput);
+	}
+	
+	//아래에서, 버튼을 하나 만들어서 print()라는 함수와 연결시켰었다.
+	// => 버튼을 한번 누르면(onclick 이벤트), alert 창에 input에 입력한 값이 출력되게 해보자.
+	
+	function print(){
+		alert(iInput.value);
+	}
+	
+	//위 방식을 통해 유효성 검사를 진행했었는데, 매번 만들기 귀찮아서 XXXValidChecker.js를 만들어두고 가져다 썼었다.
+	//XXXValidChecker.js에서 각종 유효성 검사하는 함수들을 만들어서 정리해 뒀었다.
+	//웹페이지에서의 이벤트를 보다 쉽게 처리하기 위해, jQuery.js라는 것을 만들기 시작했다.
+	//자바스크립트 자체를 편하게 사용할 수 있도록, 함수를 정리해 놓은 것이라고 생각하면 된다.
+	
+	//이제부터 JQuery를 사용해볼 예정이다.
+	
+</script>
+
+</head>
+<body onload = "init();"><!-- onload 이벤트는, 실행 시 페이지가 모두 로딩된 후 지정된 함수를 실행시킨다.  -->
+
+	<!--JQuery에 대하여.-->
+	<!--이 html은, 우선 JQuery가 없던 시절의 예제이다.  -->
+
+	<input id = "i">
+	<button onclick = "print();">Print</button>
+
+</body>
+</html>

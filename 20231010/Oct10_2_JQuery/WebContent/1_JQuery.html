@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type = "text/javascript" src = "jQuery.js"></script>
+
+<script type = text/javascript>
+	//jQuery의 문법.
+	//1. $(선택자).이벤트(콜백함수);
+	//1-1. 콜백함수란? 어떤 이벤트에 의해 호출되어지는 함수를 가리킨다.
+	//이전 0번 html에서 사용하던 각종 이벤트들을 jquery형으로 사용해보기.
+	
+	/*$(document).ready(function init(){
+		alert("준비 완료!");
+	});*/
+	
+	/*$(function(){
+		
+		alert("준비 완료!");
+	});*/
+	
+	// CSS에서 사용하는 선택자 써보기.
+	$(function(){
+		
+		/*"h1을 클릭했을 때" 라는 의미의 JQuery 함수 선언*/
+		$("h1").click(() => {
+			/*"h1을 클릭한 상태에서, h2를 클릭까지 했을 때" */
+			$("h2").click(function(){
+				/*아래 alert는, 위 함수가 발동하는 조건(h1을 누르고 h2를 누를때)이 발동할 때마다 중첩해서 실행된다. */
+				/*h1를 누르고 h2를 누르는걸 2번했다면, 이후에 계속 h2를 누를 때마다 alert가 두번씩 실행된다.  */
+				alert("왜ㅐㅐㅐㅐㅐ애애애애우")
+			});
+			
+		});
+		
+		/*h3를 클릭할 때마다, true와 false를 번갈아 실행하는 스위치 기능  */
+		let b = false;
+		$("h3").click(() => {
+			b = !b;
+			alert(b);
+		});
+		
+		/* 페이지의 id가 "i"인 요소에 접근하는 방법 */
+		let iInput = $("#i");
+		
+		//html에 있는 <button>에 클릭이벤트가 들어가면, 콜백함수가 자동으로 실행되게끔 연결해본다.
+		//input 태그에 입력한 값 alert로 띄워보기
+		//모든 button을 지정하여 아래 클릭이벤트를 넣었기 때문에, 어떤 button을 눌러도 아래 alert가 실행된다.
+		$("button").click(() => {
+			alert(iInput.val());
+		});
+		
+	});
+	
+</script>
+
+</head>
+<body>
+	<h1> 다들 푹 쉬다 오셔서 긍가 피공해보이쉬하네요</h1>
+	<h2> 근데 아직 화요일이쥬?</h2>
+	<h3> 주말까지 한참 남았쥬??</h3>
+	<hr>
+	<input id = "i">
+	<button> 출력 </button>
+	<hr>
+	<button> Print </button>
+
+</body>
+</html>
