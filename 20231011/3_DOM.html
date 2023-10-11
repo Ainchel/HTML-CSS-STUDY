@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type = "text/css">
+	.t2{
+		font-size:30pt;
+	}
+	
+	#t{
+		background-color:pink;
+		color:white;
+	}
+	
+	div{
+		border: pink solid 3px;
+		width: 300px;
+		height: 300px;
+	}
+
+</style>
+
+<script type = "text/javascript" src = jQuery.js></script>
+<script>
+
+	$(function(){
+		$("#b1").click(() => {
+			//alert("b1 작동");
+			
+			//<a> 태그로 된 DOM객체의 속성(내용물 - text) 바꾸기
+			
+			//위 text()의 소괄호에 값을 넣지 않으면, 기존 값을 가져온다.
+			//아래처럼 함수의 결과를 변수에 담을 수도 있다.
+			//소괄호 안에 뭔가 썼을 때에는, 적은 값이 아닌 다른 값이 들어왔다.
+			//let t = $("a").text();
+			//alert(t);
+			
+			//.text()와 비교할 .html()함수.
+			//차이점은, .text의 경우 html의 <>태그 값이 먹히지 않는다(문법이 적용되지 않고 텍스트 그대로 노출)
+			//.html의 경우, html에서 사용하는 <>태그 문법이 적용된다.(텍스트가 그대로 뜨지 않고, html문법이 적용)
+			//$("a").text("<b>유튜브로</b>"); // 태그가 안 먹혀 <b> </b>가 그대로 텍스트로 노출됨
+			$("a").html("<b>유튜브로</b>"); // 태그가 먹혀, "유튜브로" 내용에 <b>태그(글씨 굵게)가 적용된다.
+			
+		});
+	
+		$("#b2").click(() => {
+			//속성 변경의 경우, 어제 배웠던 .attr을 사용하면 된다.			
+			$("a").attr("href", "http://www.youtube.com");
+			
+			//a태그에 css를 주고 싶은데, 부여할 게 많다면 id를 줘버리고 id에 css를 발라둬도 작동함.
+			$("a").attr("id", "t");
+			
+			//현재 적용되어 있는 속성을 지울 수도 있다. 아래 함수 사용
+			$("a").removeAttr("class"); //이 "class"가 가지고 있는 속성을 지워라. 속성명을 적어야 한다.
+		
+		});
+	
+		let n = 0;
+		
+		//div에 marquee DOM객체를 추가해보기.
+		$("#b3").click(() => {
+			//alert("b3 버튼 작동");
+			
+			n++;
+			
+			// $("css선택자") or $("변수명")의 경우 : 있는 것을 선택한다.
+			// $("DOM객체") : 라고 적을 경우, 새로운 DOM객체를 생성하겠다는 의미가 크다.
+			// 여기서 DOM 객체라고 한다면, <>가 들어간 태그 모양의 객체를 가리킨다.
+			
+			let m = $("<marquee></marquee>").text("테스트입니다." + n + "번째");
+			
+			//behavior 속성은, marquee 객체의 스크롤 방식을 설정한다.
+			//속성 값 scroll : 한쪽 방향으로만 진행한다. (기본값)
+			//속성 값 alternate : 왕복 방향으로 진행한다.
+			m.attr("behavior", "alternate");
+			
+			// direction : 스크롤 방향을 설정한다.
+			// 속성 값으로는 left, right, up, down으로 설정할 수 있다.
+			m.attr("direction", "right");
+			
+			// 요소를 추가하는 방법 - 여기서는 div를 기준으로 했을 때.
+			// 1) 기존 요소의 내부에 추가 - append, prepend
+			$("div").append(m); // 요소 내부에, 선택된 요소의 마지막에 추가됨(나중인 애가 점점 아래로 감)
+			//$("div").prepend(m); // 요소 내부에, 선택된 요소의 처음에 추가됨(처음인 애가 점점 아래로 감)
+			
+			// 2) 기존 요소의 외부에 추가 - before, after
+			//$("div").before(m); // 요소 외부에, 추가되는 값이 요소 바로 앞에 추가됨(요소 바로 위)
+			//$("div").after(m); // 요소 외부에, 추가되는 값이 요소 바로 뒤에 추가됨(요소 바로 아래)
+			
+		});
+		
+		//기존의 요소를 삭제하는 방법 - 
+		$("#b4").click(() => {
+			//alert("b4 작동");
+			
+			//div의 안에 있는 marquee를 삭제하기.
+			//1) remove() : 
+			//$("div").remove(); // 이걸로 하면 테두리로 지정한 선 등도 전부 삭제됨.
+							   // div + div 안의 하위 요소들까지 저언부 제거.
+							   // div가 없어졌기 때문에, 이후 추가도 불가능해진다.
+							   
+			//2) empty() : 
+			$("div").empty(); // 이걸로 하면 테두리는 남고, 내부에 추가한 하위 요소들만 지워준다.
+		});
+		
+		$("#regbtn").click(() => {
+			let menu = $("#ip1").val();
+			let price = $("#ip2").val();
+			
+			let newtr = $("<tr></tr>");
+			$("table").append(newtr);
+			
+			let menuDOM = $("<td></td>").text(menu);
+			let priceDOM = $("<td></td>").text(price);
+			
+			newtr.append(menuDOM);
+			newtr.append(priceDOM);
+			
+		});
+		
+		/* 아래처럼도 가능. 다른 사람 풀이.
+		  $('#b5').click(()=>{
+	      	$('table').append(
+      		'<tr><td>' + $('#menu').val() + '</td><td>' + $('#price').val() + '</td></tr>') 
+   		  });
+		*/
+		
+	});
+
+</script>
+
+</head>
+<body>
+	메뉴 : <input id = "ip1"> <p>
+	가격 : <input id = "ip2"> <p>
+	<button id = "regbtn"> 등록 </button>
+	
+	<hr>
+	
+	<table border = "1">
+		<tr>
+			<td id = "menutd"> 메뉴명 </td>
+			<td id = "pricetd"> 가격 </td>
+		</tr>
+	
+	</table>
+
+	<a href = "http://www.naver.com" class="t2">네이버로</a>
+	<hr>
+	<button id = "b1">내용 수정</button><p>
+	<button id = "b2">속성 수정</button><p>
+	<button id = "b3">DOM객체 수정</button><p>
+	<button id = "b4">DOM객체 삭제</button><p>
+	<div></div>
+
+</body>
+</html>

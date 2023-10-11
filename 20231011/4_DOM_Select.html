@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type = "text/css">
+
+	td{
+		height:100px;
+	}
+	
+	input{
+		height:50px;
+	}
+	
+	button{
+		width:100px;
+		height:50px;
+	}
+</style>
+
+<script type = "text/javascript" src = jQuery.js></script>
+<script>
+	$(function(){
+		//alert("4_DOM_Select.html 진입");
+		
+		//각 버튼들을 클릭했을 때, 누른 그 각 버튼에만 css를 부여하고 싶을 때?
+		$("button").click(function() {
+			
+			//$(this) : 클릭 이벤트를 발생했을 때, 그 콜백함수를 호출한 장본인(누른 그 버튼)에만 코드를 실행시킨다.
+			//근데이거, 위에 click(() => ) 요 부분에서 애로우 함수는 못쓰고, 반드시 function()으로만 사용해야 한다.
+			$(this).css("background-color", "red");
+			
+			//누른 버튼이 있는 td에만 배경 색상을 변경하기.
+			//아래 코드로 하면, html 내 모든 td들에 색상 변경이 적용된다.
+			//$("td").css("background-color", "teal");
+			
+			//우리가 누르는 버튼을 기준으로 했을 때, 상위 요소인가 하위 요소인가를 먼저 확인해야 한다.
+			//이 때 parent() : 내가 누른 this 기준으로, 한단계 상위 DOM 객체로 접근.
+			//그 반대인 children() : 내가 누른 this 기준으로, 한단계 하위 DOM 객체로 접근한다.
+			
+			$(this).parent().css("background-color", "teal");
+			
+			//눌린 버튼에 있는 table의 테두리를 파란색으로 변경하기.
+			//<button> 기준으로 <table>까지 가야하는데, 이런다고 상상상위인 parent().parent().parent()를 할 수는 없는 노릇이다.
+			//이를 위한 closest("CSS선택자") : 상위에 있는 것중에서, 가장 가까운 입력한 선택자를 찾아준다.
+			//혹은 find() : 특정한 선택자를 찾아준다.
+			
+			$(this).closest("table").css("border", "blue solid 3px");
+			
+			//input에 뭐 쓰고 버튼 눌렀을 때, input에 쓴 글자의 색 이름으로 버튼 내용물이 바뀌게
+			//아래처럼 할 수도 있지만, 보다 편한 방법이 있으므로 추가 설명
+			//let color = $(this).parent().find("input").val();
+			//siblings() : 동일 선상(상위/하위가 아닌 동등)에 있는 특정한 선택자를 찾아온다.
+			let color = $(this).siblings("input").val();			
+			$(this).css("color", color);
+			
+		});
+		
+		$("td").click(function(){
+			
+			//td를 클릭했을 때, 눌린 td의 배경색을 노란색으로 바꾸기.
+			//td를 클릭했을 때, 그 td에 든 모든 배경색을 핑크색으로 바꾸기.
+			//td를 클릭했을 때, td 속에 들어있는 버튼의 테두리색을 흰색으로 바꾸기.
+			
+			
+			
+			//alert("td클릭 진입");
+			$(this).css("background-color", "yellow");
+			$(this).children().css("background-color", "pink");
+			$(this).children().css("border", "white solid 3px");
+			
+		});
+		
+	});
+</script>
+
+</head>
+<body>
+	<table border = "1">
+		<tr>
+			<td>
+			<input> <button> 1111111111 </button>
+			</td>
+		</tr>
+	</table>
+	<table border = "1">
+		<tr>
+			<td>
+			<input> <button> 2222222222 </button>
+			</td>
+		</tr>
+	</table>
+	<table border = "1">
+		<tr>
+			<td>
+			<input> <button> 3333333333 </button>
+			</td>
+		</tr>
+	</table>
+	<table border = "1">
+		<tr>
+			<td>
+			<input> <button> 4444444444 </button>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
