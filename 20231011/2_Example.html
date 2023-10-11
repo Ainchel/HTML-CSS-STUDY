@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type = "text/javascript" src = jQuery.js></script>
+<script>
+	//반복문을 활용하여, ㅋㅋㅋㅋㅋ에 글자색 : green, 배경색 : red
+	//반복문을 활용하여, ㅎㅎㅎㅎㅎ에 글자색 : yellow, 배경색 : blue
+	//반복문을 활용하여, ㅠㅠㅠㅠㅠ에 글자색 : pink, 배경색 : teal색
+
+$(function(){
+	
+	let arrobj = [
+		{
+			color : "green",
+			bgc : "red"
+		},
+		{
+			color : "yellow",
+			bgc : "blue"
+		},
+		{
+			color : "pink",
+			bgc : "teal"
+		}
+	];
+	
+	$("td").each(function(i, td){
+		$(td).css("color", arrobj[i].color);
+		$(td).css("background-color", arrobj[i].bgc);
+	});
+	
+	let i = 0;
+	
+	setInterval(() => {
+		i++;
+		
+		if(i == 8){
+			i = 1;
+		}
+		$("img").attr("src", i + ".png");
+	}, 300);
+	
+});
+
+</script>
+
+</head>
+<body>
+
+	<table id = "t">
+		<tr>
+			<td id = "z">ㅋㅋㅋㅋㅋ</td>
+		</tr>
+		<tr>
+			<td id = "g">ㅎㅎㅎㅎㅎ</td>
+		</tr>
+		<tr>
+			<td id = "b">ㅠㅠㅠㅠㅠ</td>
+		</tr>
+		
+	</table>
+	
+	<hr>
+	
+	<img src>
+	
+
+</body>
+</html>
