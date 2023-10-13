@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.inchel.oct131.error.ErrorMapper">
+
+	<select id = "getAllError" resultType = "com.inchel.oct131.error.Error">
+	
+	select * from oct13_error order by e_where
+	
+	</select>
+	
+	<!-- 문자열을 포함한 검색을 할 때, oracle 에서는 %문자열%을 썼고,
+	myBatis에서는 %를 문자열로 만들어서('%'||문자열||'%') 써야 한다.  -->
+	
+	<select id = "searchError" resultType = "com.inchel.oct131.error.Error"
+		parameterType = "com.inchel.oct131.error.Error">
+		select * from oct13_error where e_what like '%'||#{e_what}||'%' order by e_where
+	</select>
+
+
+</mapper>
